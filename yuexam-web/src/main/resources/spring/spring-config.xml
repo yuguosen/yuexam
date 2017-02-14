@@ -12,7 +12,7 @@
 	<!-- enable transaction demarcation with annotations -->
 	<tx:annotation-driven />
     <task:annotation-driven/>
-	<context:property-placeholder location="classpath:config.ext.properties" />
+	<context:property-placeholder location="classpath:config.properties" />
 
 	<!-- 扫描注解Bean -->
 	<context:component-scan base-package="com.bqs.yu.yuexam">
@@ -70,11 +70,11 @@
 		<aop:pointcut expression="execution (* com.bqs.yu.yuexam..service..*.*(..))" id="userAopService" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="userAopService" />
 	</aop:config>
-    <bean class="com.bqs.ares.web.utils.SpringContext" />
+   <!-- <bean class="com.bqs.ares.web.utils.SpringContext" />-->
 	<!-- define the SqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="typeAliasesPackage" value="com.bqs.risk.bms.domain" />
+		<property name="typeAliasesPackage" value="com.bqs.yu.yuexam.domain" />
 		<property name="plugins">
 			<array>
 				<bean class="com.github.pagehelper.PageHelper">
@@ -89,7 +89,7 @@
 	</bean>
 	<!-- scan for mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.bqs.risk.bmsdvp.dao" />
+		<property name="basePackage" value="com.bqs.yu.yuexam.dao" />
 	</bean>
 
 	<bean id="dataSourceProxy" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">

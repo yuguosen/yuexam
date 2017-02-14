@@ -1,0 +1,14 @@
+*.class
+*.jar
+/bin/
+target/
+.svn/
+src/test/
+.settings/
+.project
+.classpath
+*.zip
+logs/
+*.log
+*.iml
+.idea/
